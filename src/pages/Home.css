@@ -1,0 +1,39 @@
+.viewtrailer{
+    min-height: 700px;
+    background-size: cover;
+    background-position:center;
+  
+    display: flex;
+    align-items: flex-end;
+  }
+  .boton{
+    background-color: #0F1014;
+    color: white;
+    outline: none;
+    border: 1px solid white;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .reproductor{
+    width: 100%;
+    height: 600px;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    color: gold; /* Color de las estrellas */
+  }
+  
+  .rating i {
+    font-size: 20px; /* Tamaño de las estrellas */
+    margin-right: 5px; /* Espaciado entre las estrellas */
+  }
+  
+  .rating span {
+    margin-left: 10px; /* Espaciado entre las estrellas y el texto */
+    font-size: 14px; /* Tamaño del texto */
+    color: black; /* Color del texto */
+  }
+  
