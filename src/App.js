@@ -1,26 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import './App.css';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Home from './pages/Home'; 
+import Home from './pages/Home';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EditUser from "./pages/EditUser";
 
 function App() {
-  const [currentForm, setCurrentForm] = useState('home'); 
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  }
-
   return (
-    <div className="App">
+    <BrowserRouter>
+      <div className="App">
+        {/* Header component can go here (optional) */}
 
-      {/* Renderiza el componente correspondiente según el valor de currentForm */}
-      {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : 
-        currentForm === "register" ? <Register onFormSwitch={toggleForm} /> : 
-        <Home />
-      }
-    </div>
+        {/* Rutas para el Login, Register y para el Home*/}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/mis-datos" element={<EditUser />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

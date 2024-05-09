@@ -14,6 +14,7 @@
     padding: 10px 15px;
     cursor: pointer;
     margin-bottom: 10px;
+    margin: 10px;
   }
   .reproductor{
     width: 100%;
@@ -23,17 +24,24 @@
   .rating {
     display: flex;
     align-items: center;
-    color: gold; /* Color de las estrellas */
   }
-  
-  .rating i {
-    font-size: 20px; /* Tamaño de las estrellas */
-    margin-right: 5px; /* Espaciado entre las estrellas */
-  }
-  
-  .rating span {
-    margin-left: 10px; /* Espaciado entre las estrellas y el texto */
-    font-size: 14px; /* Tamaño del texto */
-    color: black; /* Color del texto */
-  }
-  
+
+.btn{
+  margin: 15px;
+  background-color: #0F1014;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+
+p{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.text-title{
+  cursor: pointer;
+}
+
+.movie-details p {
+  margin: 10px 0; /* Esto establece un margen vertical de 10px y un margen horizontal de 0 para todos los párrafos dentro de .movie-details */
+}
