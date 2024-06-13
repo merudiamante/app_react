@@ -7,20 +7,20 @@ function Header( ) {
    
       return (
         <header>
-        <div class="nav-container">
-          <ul class="nav-left">
-            <li class="nav-item">
+        <div className="nav-container">
+          <ul className="nav-left">
+            <li className="nav-item">
               <Link to="/" class="link-btn">Home</Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link to="/favoritos" class="link-btn">Favoritos</Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link to="/mis-datos" class="link-btn">Mis Datos</Link>
             </li>
           </ul>
-          <ul class="nav-right">
-            <li class="nav-item">
+          <ul className="nav-right">
+            <li className="nav-item">
               <Link to="/login" class="link-btn">Iniciar Sesión</Link>
             </li>
           </ul>

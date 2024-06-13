@@ -1,47 +1,69 @@
+.Home{
+margin:0;
+padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+  margin: auto;
+  max-width: 1200px;
+  padding: 0 10px;
+}
+
 .viewtrailer{
-    min-height: 700px;
-    background-size: cover;
-    background-position:center;
-  
-    display: flex;
-    align-items: flex-end;
-  }
-  .boton{
-    background-color: #0F1014;
-    color: white;
-    outline: none;
-    border: 1px solid white;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    margin: 10px;
-  }
-  .reproductor{
-    width: 100%;
-    height: 600px;
-  }
-
-  .rating {
-    display: flex;
-    align-items: center;
-  }
-
-.btn{
-  margin: 15px;
-  background-color: #0F1014;
-  border: 1px solid white;
-  cursor: pointer;
+  min-height: 500px;
 }
 
-
-p{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.reproductor{
+  width: 100%;
+  height: 500px;
 }
 
-.text-title{
-  cursor: pointer;
+/* Estilos para la sección de detalles de la película */
+.movie-details {
+  margin-top: 10px;
+}
+
+.movie-details h1 {
+  margin-bottom: 10px;
 }
 
 .movie-details p {
-  margin: 10px 0; /* Esto establece un margen vertical de 10px y un margen horizontal de 0 para todos los párrafos dentro de .movie-details */
+  margin-bottom: 10px;
+}
+
+/* Estilos para la sección de comentarios */
+.comment-section {
+  margin-top: 20px;
+}
+
+.comment-section textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  resize: none;
+}
+
+.comment-section .buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-section button {
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.boton{
+  outline: none;
+  border: 1px solid white;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin: 10px;
 }

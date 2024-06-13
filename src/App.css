@@ -48,15 +48,12 @@ button {
   font-size: 15px;
 }
 
-.btn{
-  border: black;
-}
+
 
 .link-btn {
   background: none;
   color: black;
-  text-decoration: underline;
+  text-decoration-line: underline;
   display: inline-block;
+  cursor: pointer;
 }
-
-

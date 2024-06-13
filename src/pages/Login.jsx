@@ -1,22 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
+import axios from 'axios';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [email, setEmail] = useState(''); 
+    const [password, setPass] = useState(''); 
+    const [isLoggedIn, setIsLoggedIn] = useState(false); 
+    const [token, setToken] = useState(''); 
+    const [user, setUser] = useState(null); 
+    const [message, setMessage] = useState('');  
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        const savedToken = localStorage.getItem('token'); 
+        if (savedToken) {
+            setToken(savedToken); 
+            fetchUser(savedToken); 
+        }
+    }, []);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aquí iría la lógica para enviar los datos de inicio de sesión al servidor y autenticar al usuario
+        
+        // Verificar si los campos están vacíos
+        if (!email || !password) {
+            setMessage('Todos los campos son requeridos.');
+            return;
+        }
 
-        // Simulación de inicio de sesión exitoso
-        setIsLoggedIn(true);
-    }
+        try {
+            const response = await axios.post('https://f570-181-229-4-119.ngrok-free.app/token', { email, password });
+            setToken(response.data.access_token); 
+            localStorage.setItem('token', response.data.access_token); 
+            fetchUser(response.data.access_token); 
+            setIsLoggedIn(true); 
+            setMessage('Logueo exitoso!');  // Establece el mensaje de éxito
+        } catch (error) {
+            console.error('Error', error); 
+            setMessage('Error al iniciar sesión. Verifique sus credenciales.');
+        }
+    };
 
-    // Si el usuario ya está autenticado, redirigirlo a la página de inicio
+    const fetchUser = async (token) => {
+        try {
+            const response = await axios.get('https://f570-181-229-4-119.ngrok-free.app/me', {
+                headers: { 
+                    'Authorization': 'Bearer ' + token,
+                    'Accept': 'application/json, text/plain, */*',
+                    "ngrok-skip-browser-warning": "69420"
+                }
+            });
+            setUser(response.data); 
+        } catch (error) {
+            console.error('Error fetching user', error); 
+        }
+    };
+
     if (isLoggedIn) {
-        return <Navigate to="/register" replace />;
+        return <Navigate to="/home" replace />;
     }
 
     return (
@@ -24,18 +64,30 @@ const Login = () => {
             <h2>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="email">Email:</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
+                <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
+                    placeholder="youremail@gmail.com"
+                    id="email"
+                    name="email"
+                />
                 <label htmlFor="password">Contraseña:</label>
-                <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
+                <input
+                    value={password}
+                    onChange={(e) => setPass(e.target.value)}
+                    type="password"
+                    placeholder="********"
+                    id="password"
+                    name="password"
+                />
                 <button type="submit">Login</button>
             </form>
-            {/* Enlace para redirigir al usuario a la página de registro */}
-            <button className="link-btn">
-                <Link to="/register">No tienes una cuenta? Regístrate aquí.</Link>
-            </button>
+            {message && <p className={`message ${isLoggedIn ? 'success' : 'error'}`}>{message}</p>} 
+            
+            <Link to="/register" className="link-btn">No tienes una cuenta? Regístrate aquí.</Link>
         </div>
     );
-}
+};
 
 export default Login;
-
