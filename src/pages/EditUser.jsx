@@ -69,7 +69,7 @@ const EditUser = () => {
                 console.log('Respuesta del PATCH:', response.data);
     
                 if (response.status === 200) {
-                    setSuccess('Datos actualizados exitosamente.');
+                    setSuccess('Datos actualizados exitosamente. Vuelva a Iniciar Sesion');
     
                     // Actualizar el estado con los datos actualizados
                     setUser({
